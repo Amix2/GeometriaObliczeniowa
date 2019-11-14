@@ -1,0 +1,16 @@
+Program działał poprawnie dla wszystkich zbiorów danych
+
+Algorytm Graham'a był szybszy w przypadku zbioru losowego, okręgu oraz kwardatu bez przekątnych
+Algorytm Jarvis'a był szybszy jedynie dla kwardatu z przekątnymi
+
+Okrąg był najgorszym zbiorem dla algorytmu Jarvis'a, wszystkie punkty były wierzchołkami otoczki, więc złożoność czasowa była kradratowa.
+Dla 1600 punktów algorytm Jarvis'a wykonywał się 500 razy dłużej niż algorytm Graham'a.
+
+Zbiór losowy stanowi przykład ogólny. Tu algorytm Jarvis'a znajduje wynik wolniej niż algorytm Graham'a, dla większych zbiorów działał 4 - 5 raza dłużej.
+
+Zbiór kwardatu z przekątną stanowi idealny zbiór pod algorytm Jarvis'a. Istnieją tylko 4 wierzchołki w otoczce, algorytm od razu je znajduje co skraca czas wykonania
+
+Warto zauważyć, że tylko w przypadku oktęgu liczba wierzchołków w otoczce wzrasta wraz z liczbą punktów. 
+Dla losowego zbioru liczba wierzchołków w otoczce wzrosta o 50% wraz z 10-cio krotnym zwiększeniem liczby punktów.
+Dla pozostałych ziobów liczba wierzchołków w otoczce bya stała.
+
