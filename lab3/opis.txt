@@ -1,0 +1,26 @@
+Pierwsza wersja algorytmu operowała na listach.
+Zdarzenia były to wartości współrzędnej X w punktach początku i końca odcinku oraz w punktach przecięć. Po każdym dodaniu nowego zdarzenia lista była sortowana.
+Odcinki przecinające miotłę również były listą sortowaną zgodnie z kluczem równym y współrzędnej przecięcia danego odcinka z miotłą, dla zadanej pozycji miotły. Przy każdym dodaniu, usunięciu oraz przecięciu cała lista była sortowana.
+Złożoność pierwszej wersji była gorsza niż O(n^2) czyli sprawdzanie wszystkich par odcinków wymaga mniej operacji.
+
+Druga, poprawiona wersja algorytmu:
+Dla ułatwienia dodałem klasy reprezentujące odcinki i punkty. Pozwoliło to na łatwe porównanie czy linie są takie same, przez porównanie czy są tym samym obiektem.
+
+Zdarzenia są obiektami.
+
+class Event:
+    def __init__(self, type, point, line=None, cross=None):
+        self.type = type    # jedna z wartości ["start", "end", "cross"],
+                            # "start" - odcinek się zaczyna, "end" - odcinek się kończy, "cross" - przecięcie odcinków
+        self.point = point  # punkt, w którym należy zatrzymać miotłę (w jego x współrzędnej)
+        self.line = line    # obiekt odcinka, który się zaczyna lub kończy (pole self.type ma wartość "start" lub "end")
+        self.cross = cross  # krotka z dwoma odcinkami, które się przecinają (pole self.type ma wartość "cross")
+
+Lista zdarzeń jest stertą (heapq - biblioteka pythona), zdarzenia są uporządkowane po x współrzędnej, czubek sterty to zdarzenie, na którym należy się zatrzymać w następnej iteracji
+
+Lista odcinków przecinających miotłę znajduje się w liście uporządkowanej po y współrzędnej punktu przecięcia danego odcinka z miotłą.
+Dodanie i usunięcie odcinka polega na binarnym wyszukiwaniu odpowiedniego indeksu i wstawieniu / usunięciu w odpowiednie miejsce.
+Zamiana kolejności polega na binarnym wyszukiwaniu indeksów zamienionych odcinków (są to zawsze elementy sąsiednie) i wykonaniu zamienienia.
+Dane o odcinkach zamieszanych w zdarzenie przechowywane są w obiekcie zdarzenia.
+
+Algorytm znajdował wielokrotnie te same punkty przecięć (lista wynikowa zawierała wielokrotnie te same punkty). Zostało to wyeliminowane poprzez dodawanie punktu do listy, tylko jeśli go tam nie ma.
