@@ -1,0 +1,16 @@
+﻿Sprawdzanie y monotoniczności:
+Znajduję lewy i prawy łańcuch
+    przechodząc po lewym łańcuchu, jeśli współrzędna y rośnie wraz z następnym punktem to wielokąt nie jest y monotoniczny
+    przechodząc po prawym łańcuchu, jeśli współrzędna y maleje wraz z następnym punktem to wielokąt nie jest y monotoniczny.
+
+Wielokąt przechowywany jest jako lista wierzchołków ułożonych przeciwnie do ruchu wskazówek zegara.
+Znalezione trójkąty przechowywane są w liście, każdy jako 3 punkty, Lista trójkątów nie wpływa na triangulacje, służy jedynie za przechowanie wyniku.
+
+Do testowania algorytmu wybrałem następujące wielokąty:
+Przypadki proste:
+    Ośmiokąt foremny
+    Wierzchołki ułożone tylko na lewym łańcuchu
+    Wierzchołki ułożone tylko na prawym łańcuchu
+Przypadki złożone:
+    2 wielokąty z zygzakami na bokach
+Wielokąt, który nie jest y monotoniczny - sprawdzeinie wyniku algorytmu dla wielokąta sprzecznego z założeniami.
